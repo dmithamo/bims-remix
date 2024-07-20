@@ -10,19 +10,17 @@ export default {
         ops: ['Black Ops One', 'system-ui'],
       },
       fontSize: {
-        base: '14px',
+        base: '12px',
       },
-      /*
-       * colors: {
-       *   primary: '#33302e',
-       *   background: '#fff1e5',
-       *   'background-dark': '#eed5c5',
-       *   'background-input': '#f3f3f3',
-       *   'background-input-dark': '#a1a1a1',
-       *   accent: '#0d7680',
-       *   error: '#c00',
-       * },
-       */
+      colors: {
+        primary: '#33302e',
+        background: '#fff1e5',
+        'background-dark': '#eed5c5',
+        'background-input': '#f3f3f3',
+        'background-input-dark': '#a1a1a1',
+        accent: '#0d7680',
+        error: '#c00',
+      },
     },
   },
   plugins: [
