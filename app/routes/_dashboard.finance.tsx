@@ -1,12 +1,12 @@
 import { type ReactElement } from 'react';
 import { financeRoute } from '~/utils/routes.utils';
-import { ExpenseIcon } from '~/components/svg-icons/expense-icon';
+import { TransactionsIcon } from '~/components/svg-icons/transactions-icon';
 import { BudgetIcon } from '~/components/svg-icons/budget-icon';
 import { BriefcaseIcon } from '~/components/svg-icons/briefcase-icon';
-import { OverviewIcon } from '~/components/svg-icons/overview-icon';
 import { LayoutWithSidebar } from '~/components/layouts/with-sidebar';
 import { FinanceTab } from '~/utils/enums';
 import { type MetaFunction } from '@remix-run/react';
+import { WalletIcon } from '~/components/svg-icons/wallet-icon';
 
 export const meta: MetaFunction = () => [{ title: 'Finance' }];
 
@@ -20,7 +20,7 @@ const SIDEBAR_LINKS: Array<{
   {
     to: financeRoute(),
     label: 'Overview',
-    icon: <OverviewIcon widthHeight={iconWidthHeight} />,
+    icon: <WalletIcon widthHeight={iconWidthHeight} />,
   },
   {
     to: financeRoute(FinanceTab.budgets),
@@ -30,7 +30,7 @@ const SIDEBAR_LINKS: Array<{
   {
     to: financeRoute(FinanceTab.transactions),
     label: 'Transactions',
-    icon: <ExpenseIcon widthHeight={iconWidthHeight} />,
+    icon: <TransactionsIcon widthHeight={iconWidthHeight} />,
   },
   {
     to: financeRoute(FinanceTab.investments),

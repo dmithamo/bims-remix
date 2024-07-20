@@ -29,13 +29,13 @@ export default function Index() {
           <p className={'opacity-80'}>Home is where the hearth is&trade;</p>
         </div>
 
-        <p className={'absolute bottom-2 opacity-50 text-sm'}>
+        <p className={'absolute bottom-2 opacity-50 text-xs'}>
           <a
             href="https://github.com/dmithamo"
             target="_blank"
             rel="noreferrer"
-            className={'underline'}>
-            &copy;2023 dmithamo | GitHub
+            className={'underline underline-offset-2'}>
+            &copy;2023 dmithamo — GitHub
           </a>
         </p>
       </div>

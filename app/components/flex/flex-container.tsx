@@ -76,8 +76,8 @@ const gapMapping: Record<GapOption, string> = {
   [GapOption.none]: 'gap-0',
   [GapOption.minimum]: 'gap-1 sm:gap-2',
   [GapOption.medium]: 'gap-2 sm:gap-4',
-  [GapOption.large]: 'gap-6 sm:gap-8',
-  [GapOption.maximum]: 'gap-12 sm:gap-24',
+  [GapOption.large]: 'gap-4 sm:gap-8',
+  [GapOption.maximum]: 'gap-8 sm:gap-16',
   [GapOption.default]: '',
 };
 

@@ -28,8 +28,8 @@ export const AppFooter: React.FC = () => (
           href="https://github.com/dmithamo"
           target="_blank"
           rel="noreferrer"
-          className={'underline'}>
-          &copy;2023 dmithamo | GitHub
+          className={'underline underline-offset-2'}>
+          &copy;2023 dmithamo — GitHub
         </a>
       </p>
     </FlexContainer>

@@ -11,6 +11,7 @@ import { WidthOption } from '~/components/utils/styles.utils';
 import type { IAppWithIcon, SessionUser } from '~/utils/types';
 import { useLocation } from '@remix-run/react';
 import { clsx } from 'clsx';
+import { BackIcon } from '~/components/svg-icons/back-icon';
 
 const headerClasses = clsx(
   'h-full w-full',
@@ -50,11 +51,8 @@ export default function AppHeader(props: Props): ReactElement {
         {activeApp ? (
           <div className={clsx('font-bold text-lg select-none')}>
             <FlexContainer gap={GapOption.large} align={AlignOption.center}>
-              <button tabIndex={0} onClick={() => history.back()}>
-                <span
-                  className={clsx('iconify h-8 w-8 cursor-pointer')}
-                  data-icon={'solar:alt-arrow-left-outline'}
-                />
+              <button onClick={() => history.back()}>
+                <BackIcon />
               </button>
               {activeApp.name}
             </FlexContainer>
