@@ -1,6 +1,6 @@
 import { type ReactElement } from 'react';
 import { settingsRoute } from '~/utils/routes.utils';
-import { LayoutWithSidebar } from '~/components/layouts/with-sidebar';
+import { LayoutWithNavbar } from '~/components/layouts/layout-with-navbar';
 import { CogIcon } from '~/components/svg-icons/cog-icon';
 import { type MetaFunction } from '@remix-run/react';
 
@@ -21,5 +21,5 @@ const SIDEBAR_LINKS: Array<{
 ];
 
 export default function SettingsLayout() {
-  return <LayoutWithSidebar sidebarLinks={SIDEBAR_LINKS} />;
+  return <LayoutWithNavbar navLinks={SIDEBAR_LINKS} />;
 }

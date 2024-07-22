@@ -3,7 +3,7 @@ import { financeRoute } from '~/utils/routes.utils';
 import { TransactionsIcon } from '~/components/svg-icons/transactions-icon';
 import { BudgetIcon } from '~/components/svg-icons/budget-icon';
 import { BriefcaseIcon } from '~/components/svg-icons/briefcase-icon';
-import { LayoutWithSidebar } from '~/components/layouts/with-sidebar';
+import { LayoutWithNavbar } from '~/components/layouts/layout-with-navbar';
 import { FinanceTab } from '~/utils/enums';
 import { type MetaFunction } from '@remix-run/react';
 import { WalletIcon } from '~/components/svg-icons/wallet-icon';
@@ -40,5 +40,5 @@ const SIDEBAR_LINKS: Array<{
 ];
 
 export default function FinanceLayout() {
-  return <LayoutWithSidebar sidebarLinks={SIDEBAR_LINKS} />;
+  return <LayoutWithNavbar navLinks={SIDEBAR_LINKS} />;
 }

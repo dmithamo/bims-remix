@@ -73,7 +73,7 @@ export default function DashboardLayout() {
           appVersion={data.appVersion}
         />
       </div>
-      <div className={'w-full flex-1'}>
+      <div className={clsx('w-full flex-1')}>
         <Outlet />
       </div>
     </div>

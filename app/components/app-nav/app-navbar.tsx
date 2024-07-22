@@ -17,9 +17,10 @@ interface Props {
   }>;
 }
 
-export default function AppNavbar(props: Props): ReactElement {
+export default function AppNavbar(props: Props): ReactElement | null {
   const { navItems } = props;
 
+  if (navItems.length < 2) return null;
   return (
     <nav
       className={clsx(
@@ -58,7 +59,7 @@ function SidebarItem({
 }): ReactElement {
   const linkClasses = ({ isActive }: { isActive: boolean }): string =>
     clsx(
-      'w-full flex flex-col items-center gap-2',
+      'w-full flex flex-col items-center gap-0',
       'justify-self-center',
       'hover:text-accent',
       isActive ? 'text-accent [&>*:nth-child(even)]:inline-block' : '',
