@@ -17,7 +17,7 @@ export enum ButtonType {
 }
 
 const buttonStyleClasses = {
-  [ButtonStyle.primary]: 'bg-accent/75 hover:bg-accent text-white',
+  [ButtonStyle.primary]: 'bg-primary/95 text-accent',
   [ButtonStyle.secondary]: 'bg-gray-500 hover:bg-gray-600 text-white',
   [ButtonStyle.ghost]: 'bg-transparent hover:bg-gray-100 text-gray-700',
   [ButtonStyle.danger]: 'bg-red-500 hover:bg-red-600 text-white',
