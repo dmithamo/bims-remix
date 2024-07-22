@@ -48,13 +48,13 @@ export const DetailedLoggedInUser = (props: Props): ReactElement => {
     <FlexContainer
       align={AlignOption.center}
       gap={GapOption.large}
-      className={'text-sm'}>
+      className={'text-sm no-underline'}>
       <img
         className={'h-20 w-20 rounded-full -ml-4'}
         src={avatar ?? genericAvatar}
         alt={name}
       />
-      <div className={'capitalize text-gray-500'}>
+      <div className={'capitalize text-primary/50'}>
         <FlexContainer
           direction={DirectionOption.column}
           gap={GapOption.minimum}>
