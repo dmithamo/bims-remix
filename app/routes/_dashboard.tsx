@@ -22,7 +22,7 @@ import { SessionUser } from '~/utils/types';
  */
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   console.log({ request });
-  const appVersion = '0.0.0';
+  const appVersion = import.meta.env.VITE_APP_VERSION ?? 'WIP';
   const user: SessionUser = {
     id: '9d2e758e-697a-4f3b-a137-fd77fed45e68',
     name: 'dmithamo',
