@@ -26,9 +26,9 @@ export const LoggedInUser = (props: Props): ReactElement => {
         src={avatar ?? genericAvatar}
         alt={name}
       />
-      <div className={'hidden sm:block capitalize text-gray-500'}>
+      <div className={'hidden sm:block capitalize'}>
         <FlexContainer direction={DirectionOption.column} gap={GapOption.none}>
-          <div className={'text-primary'}>{name}</div>
+          <div className={''}>{name}</div>
           <div className={'text-xs'}>
             <span className={''}>{role.name}</span>
             <span> &#8226; </span>

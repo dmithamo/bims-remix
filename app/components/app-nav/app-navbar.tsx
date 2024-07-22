@@ -3,10 +3,9 @@ import {
   AlignOption,
   DirectionOption,
   FlexContainer,
-  GapOption,
   JustifyOption,
 } from '~/components/flex/flex-container';
-import { SpacingOption, WidthOption } from '~/components/utils/styles.utils';
+import { WidthOption } from '~/components/utils/styles.utils';
 import { NavLink } from '@remix-run/react';
 import { clsx } from 'clsx';
 
@@ -18,22 +17,27 @@ interface Props {
   }>;
 }
 
-export default function AppSidebar(props: Props): ReactElement {
+export default function AppNavbar(props: Props): ReactElement {
   const { navItems } = props;
 
   return (
     <nav
       className={clsx(
-        `w-full sm:w-fit sm:h-full`,
-        'absolute bottom-0 left-0 sm:static',
-        'py-2 sm:py-3 px-2',
-        'bg-background-dark',
-        'border-r border-r-background-dark',
+        `w-full flex items-center justify-center`,
+        'fixed bottom-0 left-0',
+        'p-6',
         'transition-all duration-200',
       )}>
       <FlexContainer
-        className={'flex-row sm:flex-col items-center justify-evenly'}
-        gap={GapOption.maximum}
+        className={clsx(
+          'bg-primary text-background',
+          'p-1',
+          'drop-shadow-2xl rounded-3xl',
+          'w-full sm:w-1/2',
+        )}
+        direction={DirectionOption.row}
+        justify={JustifyOption.around}
+        align={AlignOption.center}
         width={WidthOption.full}>
         {navItems.map(({ to, icon, label }) => (
           <SidebarItem key={to} to={to} label={label} icon={icon} />
@@ -53,20 +57,17 @@ function SidebarItem({
   icon: ReactElement;
 }): ReactElement {
   const linkClasses = ({ isActive }: { isActive: boolean }): string =>
-    clsx('w-full', 'hover:text-accent', isActive ? 'text-accent' : '');
+    clsx(
+      'w-full flex flex-col items-center gap-2',
+      'justify-self-center',
+      'hover:text-accent',
+      isActive ? 'text-accent [&>*:nth-child(even)]:inline-block' : '',
+    );
 
   return (
     <NavLink end={true} className={linkClasses} to={to}>
-      <FlexContainer
-        justify={JustifyOption.start}
-        gap={GapOption.minimum}
-        align={AlignOption.center}
-        width={WidthOption.full}
-        direction={DirectionOption.column}
-        marginY={SpacingOption.large}>
-        {icon}
-        <span className={'text-xs'}>{label}</span>
-      </FlexContainer>
+      {icon}
+      <span className={'text-xs hidden'}>{label}</span>
     </NavLink>
   );
 }

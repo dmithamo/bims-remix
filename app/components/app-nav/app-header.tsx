@@ -9,15 +9,16 @@ import {
 } from '~/components/flex/flex-container';
 import { WidthOption } from '~/components/utils/styles.utils';
 import type { IAppWithIcon, SessionUser } from '~/utils/types';
-import { useLocation } from '@remix-run/react';
+import { Link, useLocation } from '@remix-run/react';
 import { clsx } from 'clsx';
 import { BackIcon } from '~/components/svg-icons/back-icon';
 
 const headerClasses = clsx(
-  'h-full w-full',
+  'w-full',
+  'fixed top-0 left-0',
   'flex justify-between items-center',
-  'p-2',
-  'shadow',
+  'p-3',
+  'bg-primary text-background',
 );
 
 interface Props {
@@ -54,7 +55,7 @@ export default function AppHeader(props: Props): ReactElement {
               <button onClick={() => history.back()}>
                 <BackIcon />
               </button>
-              {activeApp.name}
+              <Link to={currentUrl}>{activeApp.name}</Link>
             </FlexContainer>
           </div>
         ) : (

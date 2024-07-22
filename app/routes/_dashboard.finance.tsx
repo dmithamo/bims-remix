@@ -10,7 +10,7 @@ import { WalletIcon } from '~/components/svg-icons/wallet-icon';
 
 export const meta: MetaFunction = () => [{ title: 'Finance' }];
 
-const iconWidthHeight = 'w-5 h-5 sm:w-7 sm:h-7';
+const iconWidthHeight = 'w-8 h-8';
 
 const SIDEBAR_LINKS: Array<{
   to: string;

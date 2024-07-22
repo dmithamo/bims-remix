@@ -10,13 +10,7 @@ import {
 import { Logo } from '~/components/logo';
 
 export const AppFooter: React.FC = () => (
-  <div
-    className={clsx(
-      'w-full',
-      'p-12',
-      'bg-background',
-      'border-t border-t-background-dark',
-    )}>
+  <div className={clsx('w-full', 'p-12', 'bg-primary text-secondary')}>
     <FlexContainer
       direction={DirectionOption.column}
       align={AlignOption.start}

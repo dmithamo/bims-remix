@@ -91,10 +91,10 @@ export const AppHeaderMenu = (props: Props): ReactElement => {
         <div
           ref={ref}
           className={clsx(
-            'absolute right-0 top-0',
+            'fixed right-0 top-0',
             'w-full h-full sm:w-[25rem]',
             'flex flex-col gap-6',
-            'p-8 bg-white shadow',
+            'p-8 bg-background text-primary shadow',
             'z-10',
           )}>
           <FlexContainer

@@ -1,5 +1,5 @@
 import type { FC, ReactElement } from 'react';
-import AppSidebar from '~/components/app-nav/app-sidebar';
+import AppNavBar from '~/components/app-nav/app-navbar';
 import { Outlet } from '@remix-run/react';
 import { clsx } from 'clsx';
 
@@ -12,9 +12,9 @@ interface Props {
 }
 export const LayoutWithSidebar: FC<Props> = ({ sidebarLinks }) => {
   return (
-    <div className={clsx('relative sm:flex', 'h-full')}>
-      <AppSidebar navItems={sidebarLinks} />
-      <div className={'flex-1 p-3 h-full'}>
+    <div className={clsx('w-full h-full')}>
+      <AppNavBar navItems={sidebarLinks} />
+      <div className={'flex-1 p-3 h-full mt-16 mb-16'}>
         <Outlet />
       </div>
     </div>
