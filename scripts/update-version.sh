@@ -1,13 +1,6 @@
-#!/bin/bash
-echo  "Updating version..."
-
+#!/bin/sh
 if [ -e ".env" ] ; then
-  version=$(git rev-parse --short HEAD)
-  sed -i '' "s/APP_VERSION=.*/APP_VERSION=$version/" .env
-  echo "Version updated."
-  echo "APP_VERSION=$version"
-
+    sed -i '' "s/VITE_APP_VERSION=.*/VITE_APP_VERSION=$(git rev-parse --short HEAD)/" .env
 else
-  echo "No .env file found. Please run setup-local.sh first."
+  echo "env file not found"
 fi
-
