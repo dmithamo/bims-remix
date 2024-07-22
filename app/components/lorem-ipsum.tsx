@@ -13,7 +13,7 @@ export const PlaceHolderText: React.FC = () => {
     <div className={'grid grid-cols-2 sm:grid-cols-8 gap-4'}>
       {images.map((imgUrl: string, index) => (
         <img
-          className={'p-4'}
+          className={'p-4 blur'}
           key={imgUrl + index}
           src={imgUrl}
           alt="jus a placeholder"

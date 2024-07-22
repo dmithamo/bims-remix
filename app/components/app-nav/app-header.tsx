@@ -34,6 +34,11 @@ export default function AppHeader(props: Props): ReactElement {
     [currentUrl, appList],
   );
 
+  const routeName = useMemo<string>(() => {
+    const segments = currentUrl.split('/');
+    return segments[segments.length - 1] || activeApp?.name || 'Overview';
+  }, [activeApp, currentUrl]);
+
   if (!user) {
     return (
       <header className={headerClasses}>
@@ -50,11 +55,14 @@ export default function AppHeader(props: Props): ReactElement {
         justify={JustifyOption.between}>
         {activeApp ? (
           <div className={clsx('font-bold text-lg select-none')}>
-            <FlexContainer gap={GapOption.large} align={AlignOption.center}>
+            <FlexContainer
+              gap={GapOption.large}
+              align={AlignOption.center}
+              className={'capitalize'}>
               <button onClick={() => history.back()}>
                 <BackIcon />
               </button>
-              {activeApp.name}
+              {routeName}
             </FlexContainer>
           </div>
         ) : (

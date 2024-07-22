@@ -79,7 +79,7 @@ export default function DashboardLayout() {
           appVersion={data.appVersion}
         />
       </div>
-      <div className={clsx('w-full flex-1 bg-secondary rounded')}>
+      <div className={clsx('w-full flex-1 bg-secondary rounded-t-xl shadow')}>
         <Outlet />
       </div>
     </div>

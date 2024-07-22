@@ -98,16 +98,17 @@ export const AppHeaderMenu = (props: Props): ReactElement => {
             'z-10',
           )}>
           <FlexContainer
+            className={'pb-8'}
             width={WidthOption.full}
             align={AlignOption.center}
             justify={JustifyOption.between}
             marginY={SpacingOption.large}>
             <DetailedLoggedInUser user={user} />
-
             <XIcon onClick={toggleMenu} iconClasses={iconClasses} />
           </FlexContainer>
 
           <FlexContainer
+            className={'pb-8 border-b border-primary/50'}
             direction={DirectionOption.column}
             gap={GapOption.medium}
             marginY={SpacingOption.large}>
@@ -127,9 +128,8 @@ export const AppHeaderMenu = (props: Props): ReactElement => {
             ))}
           </FlexContainer>
 
-          <hr className={'my-4'} />
-
           <FlexContainer
+            className={'pb-8 border-b border-primary/50'}
             direction={DirectionOption.column}
             gap={GapOption.medium}
             marginY={SpacingOption.large}>
@@ -145,8 +145,6 @@ export const AppHeaderMenu = (props: Props): ReactElement => {
               </HeaderMenuItemWrapper>
             ))}
           </FlexContainer>
-
-          <hr className={'my-4'} />
 
           <FlexContainer
             direction={DirectionOption.column}

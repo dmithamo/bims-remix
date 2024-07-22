@@ -31,7 +31,7 @@ export const Logo = (props: Props): ReactElement => {
         align={AlignOption.center}
         gap={GapOption.medium}
         className="text-accent uppercase text-md font-black">
-        <span className="">&#10058;</span>
+        <span className="text-lg">&#10058;</span>
         <span>{'///'}</span>
         <span>{'bims'}</span>
       </FlexContainer>
