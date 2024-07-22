@@ -12,8 +12,8 @@ export default {
       },
       colors: {
         primary: '#000000',
-        secondary: '#fff',
-        background: '#fff',
+        secondary: '#fdfdfc',
+        background: '#f7f6f4',
         'background-input': '#f3f3f3',
         accent: '#fca311',
         error: '#c00',

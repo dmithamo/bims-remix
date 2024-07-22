@@ -8,6 +8,7 @@ import {
 import { WidthOption } from '~/components/utils/styles.utils';
 import { NavLink } from '@remix-run/react';
 import { clsx } from 'clsx';
+import { elementRounding } from '~/utils/styling-constants';
 
 interface Props {
   navItems: Array<{
@@ -31,9 +32,9 @@ export default function AppNavbar(props: Props): ReactElement | null {
       )}>
       <FlexContainer
         className={clsx(
-          'bg-primary text-background',
+          'bg-primary text-secondary',
           'p-1',
-          'drop-shadow-2xl rounded-3xl',
+          elementRounding,
           'w-full sm:w-1/2',
         )}
         direction={DirectionOption.row}

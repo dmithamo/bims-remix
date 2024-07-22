@@ -17,7 +17,7 @@ const headerClasses = clsx(
   'w-full',
   'flex justify-between items-center',
   'p-3',
-  'bg-primary text-background',
+  'bg-background text-primary',
 );
 
 interface Props {

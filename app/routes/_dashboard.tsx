@@ -61,7 +61,13 @@ export default function DashboardLayout() {
   );
 
   return (
-    <div className={clsx('bg-background', 'w-full h-screen', 'flex flex-col')}>
+    <div
+      className={clsx(
+        'bg-background',
+        'w-full h-screen',
+        'flex flex-col',
+        'bg-background',
+      )}>
       <div className={clsx('w-full', headerNavHeight)}>
         <AppHeader
           appList={data.allowedApps.map(({ href, ...rest }) => ({
@@ -73,7 +79,7 @@ export default function DashboardLayout() {
           appVersion={data.appVersion}
         />
       </div>
-      <div className={clsx('w-full flex-1')}>
+      <div className={clsx('w-full flex-1 bg-secondary rounded')}>
         <Outlet />
       </div>
     </div>
