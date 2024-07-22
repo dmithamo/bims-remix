@@ -13,7 +13,7 @@ export default {
       colors: {
         primary: '#000000',
         secondary: '#fdfdfc',
-        background: '#e2e2c7',
+        background: '#ececd5',
         'background-input': '#f3f3f3',
         error: '#c00',
       },

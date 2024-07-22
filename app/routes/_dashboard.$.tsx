@@ -7,6 +7,7 @@ import {
   AlignOption,
   DirectionOption,
   FlexContainer,
+  GapOption,
   JustifyOption,
 } from '~/components/flex/flex-container';
 import { HeightOption } from '~/components/utils/styles.utils';
@@ -21,7 +22,7 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 
   return {
     status: 404,
-    message: `Page not found: ${params['*']}`,
+    message: `The page at ${params['*']} does not currently exist, though it once might have.`,
   };
 }
 
@@ -36,25 +37,28 @@ export default function NotFoundPage() {
         direction={DirectionOption.column}
         align={AlignOption.center}
         justify={JustifyOption.center}>
-        <div>
-          <h1 className="text-8xl font-bold text-gray-700">{data.status}</h1>
-          <p className="text-gray-500">{data.message}</p>
-          <p className="text-gray-500 mb-4">
-            You are lost. &nbsp;
-            <button
-              className={clsx(
-                'text-accent',
-                'cursor-pointer',
-                'underline',
-                'underline-offset-4',
-              )}
-              onClick={() => {
-                navigate(-1);
-              }}>
-              Go back one step
-            </button>
-          </p>
-        </div>
+        <FlexContainer
+          direction={DirectionOption.column}
+          gap={GapOption.large}
+          align={AlignOption.start}
+          className={'px-8'}>
+          <h1 className="w-full text-8xl font-black opacity-20 text-center">
+            {data.status}
+          </h1>
+          <p className="">{data.message}</p>
+          <button
+            className={clsx(
+              'text-accent',
+              'cursor-pointer',
+              'underline',
+              'underline-offset-4',
+            )}
+            onClick={() => {
+              navigate(-1);
+            }}>
+            Back
+          </button>
+        </FlexContainer>
       </FlexContainer>
       <AppFooter />
     </>
