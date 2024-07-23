@@ -13,44 +13,27 @@ import {
   useLoaderData,
   useNavigation,
 } from '@remix-run/react';
-import { InputField } from '~/components/form-fields/input-field';
-import { InputType } from '~/components/utils/enums';
 import { clsx } from 'clsx';
 import { Button, ButtonStyle, ButtonType } from '~/components/button/button';
 import { SendIcon } from '~/components/svg-icons/send-icon';
-import {
-  ActionFunctionArgs,
-  LoaderFunctionArgs,
-  redirect,
-} from '@remix-run/server-runtime';
+import { LoaderFunctionArgs } from '@remix-run/server-runtime';
 import { homeRoute, loginRoute } from '~/utils/routes.utils';
-import { login } from '~/api/auth/login';
-import { isValidSession } from '~/api/auth/is-valid-session';
 import { ErrorAlert } from '~/components/alerts/error-alert';
+import { authenticator } from '~/services/auth/auth.server';
+import AppHeader from '~/components/app-nav/app-header';
 
 export const meta: MetaFunction = () => [{ title: 'Bims | Login' }];
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  console.log({ request });
-  const session = null;
+  const user = await authenticator.isAuthenticated(request, {
+    // failureRedirect: loginRoute(),
+    successRedirect: homeRoute(),
+  });
 
-  if (isValidSession(session)) return redirect(homeRoute());
-  return { error: 'Hello error' };
+  console.log({ user });
+
+  return { error: null };
 };
-
-export async function action({ request }: ActionFunctionArgs) {
-  const formData = await request.formData();
-  const username = formData.get('username');
-  const password = formData.get('password');
-
-  const { error, sessionId, sessionUser } = await login(
-    username ?? '',
-    password ?? '',
-  );
-
-  console.log({ error, sessionId, sessionUser });
-  return redirect(homeRoute());
-}
 
 export default function Login() {
   const navigation = useNavigation();
@@ -62,39 +45,28 @@ export default function Login() {
       width={WidthOption.full}
       isRaised={true}
       padding={SpacingOption.maximum}>
-      <Form method={'post'} action={loginRoute()}>
+      <FlexContainer
+        direction={DirectionOption.column}
+        align={AlignOption.start}
+        justify={JustifyOption.between}
+        width={WidthOption.full}>
+        <AppHeader />
+
         <FlexContainer
           direction={DirectionOption.column}
-          gap={GapOption.maximum}>
-          <h1 className={clsx('text-2xl font-bold')}>Login to your account</h1>
+          width={WidthOption.full}
+          gap={GapOption.none}
+          className={'py-4'}>
+          <h1 className={clsx('text-2xl font-bold')}>Welcome to Bims</h1>
+          <p>Login to your account to get started</p>
+        </FlexContainer>
 
-          {error && !isSubmitting && <ErrorAlert message={error} />}
+        {error && !isSubmitting && <ErrorAlert message={error} />}
 
-          <div className="g-signin2" data-onsuccess="onSignIn"></div>
-
-          <FlexContainer
-            width={WidthOption.full}
-            direction={DirectionOption.column}
-            gap={GapOption.large}>
-            <InputField
-              name={'username'}
-              label={'Email'}
-              type={InputType.email}
-              placeholder={'Enter your email address'}
-              required={true}
-              isDisabled={isSubmitting}
-            />
-
-            <InputField
-              name={'password'}
-              label={'Password'}
-              type={InputType.password}
-              placeholder={'Enter your password'}
-              required={true}
-              isDisabled={isSubmitting}
-            />
-          </FlexContainer>
-
+        <Form
+          method={'post'}
+          action={loginRoute('google')}
+          className={'w-full py-4'}>
           <Button
             type={ButtonType.submit}
             style={ButtonStyle.primary}
@@ -107,12 +79,16 @@ export default function Login() {
               className={'py-1'}>
               <SendIcon />
               <span className={'text-md font-bold'}>
-                {isSubmitting ? 'Logging in...' : 'Login'}
+                {isSubmitting ? 'Logging in...' : 'Login with Google'}
               </span>
             </FlexContainer>
           </Button>
-        </FlexContainer>
-      </Form>
+        </Form>
+
+        <p className={'text-primary/45 text-xs'}>
+          By signing in, you accept our Terms and Conditions
+        </p>
+      </FlexContainer>
     </CardContainer>
   );
 }

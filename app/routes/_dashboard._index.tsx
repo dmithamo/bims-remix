@@ -12,7 +12,6 @@ import { type LoaderFunctionArgs } from '@remix-run/server-runtime';
 export const meta: MetaFunction = () => [{ title: 'bims' }];
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  console.log({ request });
   return null;
 };
 

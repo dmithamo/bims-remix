@@ -14,6 +14,7 @@ import { CalendarIcon } from '~/components/svg-icons/calendar-icon';
 import { clsx } from 'clsx';
 import { getAllowedAppsFromSession } from '~/api/auth/permissions';
 import { SessionUser } from '~/utils/types';
+import { authenticator } from '~/services/auth/auth.server';
 
 /*
  * Get session user from session cookie
@@ -21,9 +22,8 @@ import { SessionUser } from '~/utils/types';
  * Return user, appVersion, allowedApps
  */
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  console.log({ request });
   const appVersion = import.meta.env.VITE_APP_VERSION ?? 'WIP';
-  const user: SessionUser = {
+  const userDummy: SessionUser = {
     id: '9d2e758e-697a-4f3b-a137-fd77fed45e68',
     name: 'dmithamo',
     email: 'b@dmithamo.dev',
@@ -36,14 +36,20 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       name: 'admin',
     },
   };
-
   const allowedApps = getAllowedAppsFromSession({
     sessionId: '9d2e758e-697a-4f3b-a137-fd77fed45e68',
-    sessionUser: user,
+    sessionUser: userDummy,
   });
 
+  const user = await authenticator.isAuthenticated(request, {
+    failureRedirect: '/login',
+  });
+
+  console.log({ user });
+
   return json({
-    user,
+    // @ts-expect-error "I know"
+    user: { ...userDummy, name: user?.name as string },
     appVersion,
     allowedApps,
   });

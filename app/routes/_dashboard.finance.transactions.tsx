@@ -3,7 +3,6 @@ import { type LoaderFunctionArgs } from '@remix-run/server-runtime';
 import { PlaceHolderText } from '~/components/lorem-ipsum';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  console.log({ request });
   return null;
 };
 

@@ -29,10 +29,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
           content={`${GOOGLE_OAUTH_CLIENT_ID}.apps.googleusercontent.com`}
         />
         <title>Bims</title>
-        <script
-          src="https://apis.google.com/js/platform.js"
-          async
-          defer></script>
         <Meta />
         <Links />
       </head>
