@@ -7,7 +7,6 @@ import {
 } from '@remix-run/react';
 import './tailwind.css';
 
-const GOOGLE_OAUTH_CLIENT_ID = import.meta.env.VITE_GOOGLE_OAUTH_CLIENT_ID;
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -26,10 +25,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          name="google-signin-client_id"
-          content={`${GOOGLE_OAUTH_CLIENT_ID}.apps.googleusercontent.com`}
-        />
         <title>Bims</title>
         <Meta />
         <Links />

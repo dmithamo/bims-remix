@@ -30,10 +30,7 @@ export default function Login() {
   const isSubmitting = navigation.state === 'submitting';
 
   return (
-    <CardContainer
-      width={WidthOption.full}
-      isRaised={true}
-      padding={SpacingOption.maximum}>
+    <CardContainer width={WidthOption.full} padding={SpacingOption.medium}>
       <FlexContainer
         direction={DirectionOption.column}
         align={AlignOption.start}
@@ -47,29 +44,55 @@ export default function Login() {
           gap={GapOption.none}
           className={'py-4'}>
           <h1 className={clsx('text-2xl font-bold')}>Welcome to Bims</h1>
-          <p>Login to your account to get started</p>
+          <p>Login to your account using one of these options to get started</p>
         </FlexContainer>
 
-        <Form
-          method={'post'}
-          action={loginRoute('google')}
-          className={'w-full py-4'}>
-          <Button
-            type={ButtonType.submit}
-            style={ButtonStyle.primary}
-            isDisabled={isSubmitting}>
-            <FlexContainer
-              direction={DirectionOption.row}
-              gap={GapOption.maximum}
-              align={AlignOption.center}
-              justify={JustifyOption.center}>
-              <SendIcon />
-              <span className={'text-md font-bold'}>
-                {isSubmitting ? 'Logging in...' : 'Login with Google'}
-              </span>
-            </FlexContainer>
-          </Button>
-        </Form>
+        <FlexContainer
+          width={WidthOption.full}
+          gap={GapOption.large}
+          align={AlignOption.center}>
+          <Form
+            method={'post'}
+            action={loginRoute('google')}
+            className={'w-full py-4'}>
+            <Button
+              type={ButtonType.submit}
+              style={ButtonStyle.primary}
+              isDisabled={isSubmitting}>
+              <FlexContainer
+                direction={DirectionOption.row}
+                gap={GapOption.maximum}
+                align={AlignOption.center}
+                justify={JustifyOption.center}>
+                <SendIcon />
+                <span className={'font-bold'}>
+                  {isSubmitting ? 'Logging in...' : 'Google'}
+                </span>
+              </FlexContainer>
+            </Button>
+          </Form>
+
+          <Form
+            method={'post'}
+            action={loginRoute('github')}
+            className={'w-full py-4'}>
+            <Button
+              type={ButtonType.submit}
+              style={ButtonStyle.primary}
+              isDisabled={isSubmitting}>
+              <FlexContainer
+                direction={DirectionOption.row}
+                gap={GapOption.maximum}
+                align={AlignOption.center}
+                justify={JustifyOption.center}>
+                <SendIcon />
+                <span className={'font-bold'}>
+                  {isSubmitting ? 'Logging in...' : 'GitHub'}
+                </span>
+              </FlexContainer>
+            </Button>
+          </Form>
+        </FlexContainer>
 
         <p className={'text-primary/45 text-xs'}>
           By continuing, you accept our Terms and Conditions
