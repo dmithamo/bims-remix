@@ -52,7 +52,7 @@ export async function action({ request }: ActionFunctionArgs) {
   return redirect(homeRoute());
 }
 
-export default function Login() {
+export default function LoginWithEmail() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   const { error } = useLoaderData<typeof loader>();
@@ -99,11 +99,12 @@ export default function Login() {
             isDisabled={isSubmitting}>
             <FlexContainer
               direction={DirectionOption.row}
-              gap={GapOption.medium}
+              gap={GapOption.maximum}
               align={AlignOption.center}
-              justify={JustifyOption.center}>
+              justify={JustifyOption.center}
+              className={'py-1'}>
               <SendIcon />
-              <span className={'text-lg sm:font-bold'}>
+              <span className={'text-md font-bold'}>
                 {isSubmitting ? 'Logging in...' : 'Login'}
               </span>
             </FlexContainer>

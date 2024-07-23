@@ -18,7 +18,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           crossOrigin={'anonymous'}
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
           rel="stylesheet"
         />
         <meta charSet="utf-8" />
@@ -27,7 +27,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className={'text-base text-primary'}>
+      <body className={'text-base text-primary bg-background'}>
         {children}
         <ScrollRestoration />
         <Scripts />

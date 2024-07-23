@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    font-family: "Overpass", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
 }

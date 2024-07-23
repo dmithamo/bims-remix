@@ -11,6 +11,7 @@ export default {
         base: '12px',
       },
       colors: {
+        accent: '#FF7F11',
         primary: '#000000',
         secondary: '#fdfdfc',
         background: '#ececd5',
@@ -20,7 +21,6 @@ export default {
     },
   },
   plugins: [
-    require('daisyui'),
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/aspect-ratio'),

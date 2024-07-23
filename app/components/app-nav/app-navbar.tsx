@@ -32,7 +32,7 @@ export default function AppNavbar(props: Props): ReactElement | null {
       )}>
       <FlexContainer
         className={clsx(
-          'bg-primary text-secondary',
+          'bg-primary',
           'p-1',
           elementRounding,
           'w-full sm:w-1/2',
@@ -63,7 +63,9 @@ function SidebarItem({
       'w-full flex flex-col items-center gap-0',
       'justify-self-center',
       'hover:text-accent',
-      isActive ? 'text-accent [&>*:nth-child(even)]:inline-block' : '',
+      isActive
+        ? 'text-accent [&>*:nth-child(even)]:inline-block'
+        : 'text-background',
     );
 
   return (

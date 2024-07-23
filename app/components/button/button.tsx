@@ -50,6 +50,7 @@ export const Button = (props: Props): ReactElement => {
         buttonStyleClasses[style],
         'w-full',
         'p-2 sm:p-3',
+        'uppercase',
         elementRounding,
         {
           'cursor-not-allowed': isDisabled,
