@@ -1,9 +1,3 @@
-import { LoaderFunctionArgs } from '@remix-run/server-runtime';
-
-export const loader = async ({ request }: LoaderFunctionArgs) => {
-  return null;
-};
-
 export default function DashboardFinanceBudgets() {
   return (
     <div className={'flex gap-1 items-center'}>

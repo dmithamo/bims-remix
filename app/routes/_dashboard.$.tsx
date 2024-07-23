@@ -17,7 +17,7 @@ import { AppFooter } from '~/components/app-nav/app-footer';
 
 export const meta: MetaFunction = () => [{ title: 'Bims | 404' }];
 
-export async function loader({ params, request }: LoaderFunctionArgs) {
+export async function loader({ params }: LoaderFunctionArgs) {
   return {
     status: 404,
     message: `The page at ${params['*']} does not currently exist, though it once might have.`,

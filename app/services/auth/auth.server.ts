@@ -23,5 +23,5 @@ const GOOGLE_STRATEGY = new GoogleStrategy<SessionUser>(
   },
 );
 
-export const authenticator = new Authenticator(sessionStorage);
+export const authenticator = new Authenticator<SessionUser>(sessionStorage);
 authenticator.use(GOOGLE_STRATEGY, 'google');

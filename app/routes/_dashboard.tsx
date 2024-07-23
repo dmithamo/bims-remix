@@ -42,13 +42,12 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   });
 
   const user = await authenticator.isAuthenticated(request, {
-    failureRedirect: '/login',
+    // failureRedirect: '/login',
   });
 
   console.log({ user });
 
   return json({
-    // @ts-expect-error "I know"
     user: { ...userDummy, name: user?.name as string },
     appVersion,
     allowedApps,

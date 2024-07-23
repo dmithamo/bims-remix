@@ -1,10 +1,5 @@
 import type { ReactElement } from 'react';
 import { type MetaFunction } from '@remix-run/react';
-import { type LoaderFunctionArgs } from '@remix-run/server-runtime';
-
-export const loader = async ({ request }: LoaderFunctionArgs) => {
-  return null;
-};
 
 export const meta: MetaFunction = () => [{ title: 'Settings' }];
 export default function SettingsHome(): ReactElement {

@@ -1,13 +1,10 @@
 import type { LoaderFunction } from '@remix-run/node';
 import { authenticator } from '~/services/auth/auth.server';
-import { homeRoute, loginRoute } from '~/utils/routes.utils';
+import { financeRoute, homeRoute } from '~/utils/routes.utils';
 
 export const loader: LoaderFunction = async ({ request }) => {
-  const rLoader = await authenticator.authenticate('google', request, {
+  return await authenticator.authenticate('google', request, {
     successRedirect: homeRoute(),
-    failureRedirect: loginRoute(),
+    failureRedirect: financeRoute(),
   });
-
-  console.log({ rLoader });
-  return rLoader;
 };

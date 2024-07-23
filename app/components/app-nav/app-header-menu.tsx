@@ -1,7 +1,11 @@
 import NavItem from '~/components/app-nav/nav-item';
 import { type ReactElement, useRef, useState } from 'react';
 import { useOnClickOutside } from '~/utils/hooks/useOnClickOutside';
-import { notificationsRoute, settingsRoute } from '~/utils/routes.utils';
+import {
+  logoutRoute,
+  notificationsRoute,
+  settingsRoute,
+} from '~/utils/routes.utils';
 import {
   AlignOption,
   DirectionOption,
@@ -158,7 +162,7 @@ export const AppHeaderMenu = (props: Props): ReactElement => {
               <span>v-{appVersion}</span>
             </FlexContainer>
 
-            <Form method={'post'}>
+            <Form method={'post'} action={logoutRoute()}>
               <button
                 type={ButtonType.submit}
                 className={clsx('outline-0 bg-transparent border-0')}>

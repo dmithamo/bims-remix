@@ -1,9 +1,4 @@
-import { LoaderFunctionArgs } from '@remix-run/server-runtime';
 import { PlaceHolderText } from '~/components/lorem-ipsum';
-
-export const loader = async ({ request }: LoaderFunctionArgs) => {
-  return null;
-};
 
 export default function FinanceIndex() {
   return (
