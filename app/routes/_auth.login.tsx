@@ -52,7 +52,7 @@ export async function action({ request }: ActionFunctionArgs) {
   return redirect(homeRoute());
 }
 
-export default function LoginWithEmail() {
+export default function Login() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   const { error } = useLoaderData<typeof loader>();
@@ -69,6 +69,8 @@ export default function LoginWithEmail() {
           <h1 className={clsx('text-2xl font-bold')}>Login to your account</h1>
 
           {error && !isSubmitting && <ErrorAlert message={error} />}
+
+          <div className="g-signin2" data-onsuccess="onSignIn"></div>
 
           <FlexContainer
             width={WidthOption.full}
