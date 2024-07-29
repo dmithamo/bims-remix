@@ -10,14 +10,14 @@ import {
 import { Logo } from '~/components/logo';
 
 export const AppFooter: React.FC = () => (
-  <div className={clsx('w-full', 'p-12', 'bg-primary text-secondary')}>
+  <div className={clsx('w-full', 'p-12', 'bg-primary text-secondary text-xs')}>
     <FlexContainer
       direction={DirectionOption.column}
       align={AlignOption.start}
       justify={JustifyOption.center}
       gap={GapOption.medium}>
       <Logo shouldClickToHome={false} />
-      <p className={'opacity-50 text-sm'}>
+      <p className={'opacity-50'}>
         <a
           href="https://github.com/dmithamo"
           target="_blank"

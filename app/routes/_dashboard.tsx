@@ -1,70 +1,19 @@
-import { type ReactElement, useMemo } from 'react';
 import { Outlet, useLoaderData } from '@remix-run/react';
 import AppHeader from '~/components/app-nav/app-header';
 import { headerNavHeight } from '~/utils/styling-constants';
-import { json, LoaderFunctionArgs } from '@remix-run/server-runtime';
-import {
-  assetsRoute,
-  financeRoute,
-  timelinesRoute,
-} from '~/utils/routes.utils';
-import { WalletIcon } from '~/components/svg-icons/wallet-icon';
-import { BriefcaseIcon } from '~/components/svg-icons/briefcase-icon';
-import { CalendarIcon } from '~/components/svg-icons/calendar-icon';
 import { clsx } from 'clsx';
-import { getAllowedAppsFromSession } from '~/api/auth/permissions';
-import { SessionUser } from '~/utils/types';
+import { LoaderFunction } from '@remix-run/node';
 import { authenticator } from '~/services/auth/auth.server';
+import { loginRoute } from '~/utils/routes.utils';
 
-/*
- * Get session user from session cookie
- * Obtain allowed app list knowing session user
- * Return user, appVersion, allowedApps
- */
-export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const appVersion = import.meta.env.VITE_APP_VERSION ?? 'WIP';
-  const userDummy: SessionUser = {
-    id: '9d2e758e-697a-4f3b-a137-fd77fed45e68',
-    name: 'dmithamo',
-    email: 'b@dmithamo.dev',
-    account: {
-      id: '9d2e758e-697a-4f3b-a137-fd77fed45e68',
-      name: 'dmithamo',
-    },
-    role: {
-      id: '9d2e758e-697a-4f3b-a137-fd77fed45e68',
-      name: 'admin',
-    },
-  };
-  const allowedApps = getAllowedAppsFromSession({
-    sessionId: '9d2e758e-697a-4f3b-a137-fd77fed45e68',
-    sessionUser: userDummy,
-  });
-
-  const user = await authenticator.isAuthenticated(request, {
-    // failureRedirect: '/login',
-  });
-
-  console.log({ user });
-
-  return json({
-    user: userDummy,
-    appVersion,
-    allowedApps,
+export const loader: LoaderFunction = async ({ request }) => {
+  return await authenticator.isAuthenticated(request, {
+    failureRedirect: loginRoute(),
   });
 };
 
 export default function DashboardLayout() {
   const data = useLoaderData<typeof loader>();
-  const appIcons = useMemo<Record<string, ReactElement>>(
-    () => ({
-      [financeRoute()]: <WalletIcon />,
-      [assetsRoute()]: <BriefcaseIcon />,
-      [timelinesRoute()]: <CalendarIcon />,
-    }),
-    [],
-  );
-
   return (
     <div
       className={clsx(
@@ -74,15 +23,7 @@ export default function DashboardLayout() {
         'bg-background',
       )}>
       <div className={clsx('w-full', headerNavHeight)}>
-        <AppHeader
-          appList={data.allowedApps.map(({ href, ...rest }) => ({
-            href,
-            icon: appIcons[href],
-            ...rest,
-          }))}
-          user={data.user}
-          appVersion={data.appVersion}
-        />
+        <AppHeader user={data.user} />
       </div>
       <div className={clsx('w-full flex-1 bg-secondary rounded-t-xl shadow')}>
         <Outlet />

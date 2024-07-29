@@ -8,26 +8,27 @@ type AuthError = {
   message: AuthErrorType;
 };
 
-type AuthResponse = {
+export type AuthResponse = {
   sessionId?: UUID;
   sessionUser?: SessionUser;
   error?: AuthError;
 };
 
 export async function login(
-  username: FormDataEntryValue,
+  email: FormDataEntryValue,
   password: FormDataEntryValue,
 ): Promise<Awaited<AuthResponse>> {
+  console.log({ email, password });
   // fake a delay
   await new Promise(resolve => setTimeout(resolve, 2000));
 
-  if (username === 'b@dmithamo.dev' && password === 'password') {
+  if (email === 'b@dmithamo.dev' && password === 'password') {
     return Promise.resolve({
       sessionId: '9d2e758e-697a-4f3b-a137-fd77fed45e68',
       sessionUser: {
         id: '9d2e758e-697a-4f3b-a137-fd77fed45e68',
-        name: username.split('@')[0],
-        email: username,
+        name: email.split('@')[0],
+        email: email,
         account: {
           id: '4f5038d1-26b9-468b-9e5c-e1fd05303a65',
           name: 'Acme Inc.',
@@ -40,7 +41,7 @@ export async function login(
     });
   }
 
-  return Promise.resolve({
+  return Promise.reject({
     error: {
       message: AuthErrorType.InvalidCredentials,
     },

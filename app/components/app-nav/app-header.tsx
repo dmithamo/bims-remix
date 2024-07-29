@@ -16,8 +16,8 @@ import { BackIcon } from '~/components/svg-icons/back-icon';
 const headerClasses = clsx(
   'w-full',
   'flex justify-between items-center',
-  'p-3',
   'text-primary',
+  'py-2',
 );
 
 interface Props {

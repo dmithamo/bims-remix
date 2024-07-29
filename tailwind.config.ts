@@ -15,7 +15,7 @@ export default {
         primary: '#000000',
         secondary: '#fdfdfc',
         background: '#ececd5',
-        'background-input': '#f3f3f3',
+        'background-input': '#cfcfcf',
         error: '#c00',
       },
     },

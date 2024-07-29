@@ -13,10 +13,11 @@ interface Props {
   width?: WidthOption;
   isRaised?: boolean;
   padding?: SpacingOption;
+  className?: string;
 }
 
 export function CardContainer(props: Props): ReactElement {
-  const { children, width, isRaised, padding } = props;
+  const { children, width, isRaised, padding, className = '' } = props;
   const widthClass = getWidthClass(width ?? WidthOption.full);
   const raisedClass = isRaised ? 'shadow' : '';
   const paddingClass = getPaddingClass(padding ?? SpacingOption.none);
@@ -29,6 +30,7 @@ export function CardContainer(props: Props): ReactElement {
         paddingClass,
         elementRounding,
         'bg-white',
+        className,
       )}>
       {children}
     </div>

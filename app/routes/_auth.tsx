@@ -13,7 +13,12 @@ export default function AuthLayout() {
         className={'bg-secondary h-screen'}
         direction={DirectionOption.column}>
         <div
-          className={clsx('w-full sm:w-[550px]', 'py-20 px-4', 'sm:mx-auto')}>
+          className={clsx(
+            'w-full sm:w-[550px]',
+            'px-6 py-2',
+            'sm:mx-auto',
+            'bg-background',
+          )}>
           <Outlet />
         </div>
       </FlexContainer>

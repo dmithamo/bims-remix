@@ -30,6 +30,7 @@ interface Props {
   isDisabled?: boolean;
   style?: ButtonStyle;
   type?: ButtonType;
+  className?: string;
 }
 
 export const Button = (props: Props): ReactElement => {
@@ -39,6 +40,7 @@ export const Button = (props: Props): ReactElement => {
     isDisabled,
     type = ButtonType.button,
     style = ButtonStyle.primary,
+    className = '',
   } = props;
 
   return (
@@ -49,13 +51,14 @@ export const Button = (props: Props): ReactElement => {
       className={clsx(
         buttonStyleClasses[style],
         'w-full',
-        'p-2 sm:p-3',
+        'p-3',
         'uppercase',
         elementRounding,
         {
           'cursor-not-allowed': isDisabled,
           'opacity-50': isDisabled,
         },
+        className,
       )}>
       {children}
     </button>

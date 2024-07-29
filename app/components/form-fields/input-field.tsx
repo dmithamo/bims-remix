@@ -47,9 +47,7 @@ export const InputField = (props: Props): ReactElement => {
         align={AlignOption.start}
         justify={JustifyOption.start}
         gap={GapOption.minimum}>
-        <strong className={clsx('text-sm sm:font-bold text-slate-700')}>
-          {label}
-        </strong>
+        <p className={clsx('text-xs text-primary/75')}>{label}</p>
 
         <input
           className={clsx(
