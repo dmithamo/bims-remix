@@ -42,13 +42,13 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   });
 
   const user = await authenticator.isAuthenticated(request, {
-    failureRedirect: '/login',
+    // failureRedirect: '/login',
   });
 
   console.log({ user });
 
   return json({
-    user: { ...userDummy, name: user?.name as string },
+    user: userDummy,
     appVersion,
     allowedApps,
   });

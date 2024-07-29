@@ -98,7 +98,7 @@ export const AppHeaderMenu = (props: Props): ReactElement => {
             'fixed right-0 top-0',
             'w-full h-full sm:w-[25rem]',
             'flex flex-col gap-6',
-            'p-8 bg-background text-primary shadow',
+            'p-8 bg-background text-primary/75 shadow',
             'z-10',
           )}>
           <FlexContainer
